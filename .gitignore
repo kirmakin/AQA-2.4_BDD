@@ -4,6 +4,7 @@ HELP.md
 .gradle
 build/
 cov/
+debug.log
 
 ### STS ###
 .apt_generated

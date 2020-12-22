@@ -1,5 +1,7 @@
 package ru.netology.web.test;
 
+import com.codeborne.selenide.commands.Should;
+import com.codeborne.selenide.commands.ShouldNot;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,6 +21,7 @@ public class TransferPageTest {
 
     private int value1 = 200;
     private int value2 = 500;
+    private int value3 = 11_000;
 
 
     @BeforeEach
@@ -45,6 +48,18 @@ public class TransferPageTest {
         var dashboard = new DashboardPage();
         dashboard.chooseSecondCardForTransfer();
         TransferPage.transaction(getFirstCardData(), Integer.toString(value2));
+        int actualSecond = DashboardPage.getBalanceOfSecondCard();
+        int actualFirst = DashboardPage.getBalanceOfFirstCard();
+        int expectedFirst = getBalanceOfFirstCard();
+        int expectedSecond = getBalanceOfSecondCard();
+        assertEquals(expectedFirst, actualFirst);
+        assertEquals(expectedSecond, actualSecond);
+    }
+    @Test
+    void ShouldNotGoOutOfBeyonds(){
+        var dashboard = new DashboardPage();
+        dashboard.chooseFirstCardForTransfer();
+        TransferPage.transaction(getSecondCardData(), Integer.toString(value3));
         int actualSecond = DashboardPage.getBalanceOfSecondCard();
         int actualFirst = DashboardPage.getBalanceOfFirstCard();
         int expectedFirst = getBalanceOfFirstCard();
