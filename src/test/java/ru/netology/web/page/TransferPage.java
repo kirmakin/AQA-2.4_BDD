@@ -2,18 +2,19 @@ package ru.netology.web.page;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
+import ru.netology.web.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class TransferPage {
-    private SelenideElement AmountField = $(".money-input .input__control");
-    private SelenideElement FromCard = $("[data-test-id=from] .input__control");
-    private SelenideElement TransferButton = $("[data-test-id=action-transfer] .button__text");
+    private static SelenideElement amountField = $(".money-input .input__control");
+    private static SelenideElement fromCard = $("[data-test-id=from] .input__control");
+    private static SelenideElement transferButton = $("[data-test-id=action-transfer] .button__text");
 
-    public void transaction(String value, String CardFrom) {
-        AmountField.doubleClick().sendKeys(Keys.BACK_SPACE, value.replace(" ", ""));
-        FromCard.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE, CardFrom.replace(" ", ""));
-        TransferButton.click();
+    public static void transaction(DataHelper.CardData fromCardData, String value) {
+        amountField.doubleClick().sendKeys(Keys.BACK_SPACE, value.replace(" ", ""));
+        fromCard.setValue(fromCardData.getCardNumber());
+        transferButton.click();
     }
 
 }
