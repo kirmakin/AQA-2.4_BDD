@@ -18,7 +18,7 @@ public class DataHelper {
         String code;
     }
 
-    public static VerificationCode getVerificationCode (AuthInfo authInfo) {
+    public static VerificationCode getVerificationCode(AuthInfo authInfo) {
         return new VerificationCode("12345");
     }
 
@@ -34,6 +34,17 @@ public class DataHelper {
 
     public static CardData getSecondCardData() {
         return new CardData("5559000000000002", "10000");
+    }
+
+    public static int checkBalanceOfCardFrom (int balance, int amountForTransfer) {
+        int finalBalance = balance - amountForTransfer;
+        return finalBalance;
+
+    }
+
+    public static int checkBalanceOfCardTo (int balance, int amountForTransfer) {
+        int finalBalance = balance + amountForTransfer;
+        return finalBalance;
     }
 
 }

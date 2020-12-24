@@ -27,13 +27,13 @@ public class DashboardPage {
         return new TransferPage();
     }
 
-    public static int getBalanceOfFirstCard() {
+    public int getBalanceOfFirstCard() {
         String selectedValue = balanceForCard1.getText();
         String balanceOfFirstCard = selectedValue.substring(29, selectedValue.indexOf(" ", 29));
         return Integer.parseInt(balanceOfFirstCard);
     }
 
-    public static int getBalanceOfSecondCard() {
+    public int getBalanceOfSecondCard() {
         String selectedValue = balanceForCard2.getText();
         String balanceOfFirstCard = selectedValue.substring(29, selectedValue.indexOf(" ", 29));
         return Integer.parseInt(balanceOfFirstCard);
