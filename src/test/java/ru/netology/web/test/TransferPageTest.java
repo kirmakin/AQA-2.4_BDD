@@ -63,7 +63,8 @@ public class TransferPageTest {
         int balanceOfFirstCardBefore = dashboard.getBalanceOfFirstCard();
         int balanceOfSecondCardBefore = dashboard.getBalanceOfSecondCard();
         val transferPage = dashboard.chooseFirstCardForTransfer();
-        transferPage.errorTransaction(getSecondCardData(), Integer.toString(value));
+        transferPage.transaction(getSecondCardData(), Integer.toString(value));
+        transferPage.errorTransaction();
         int actualSecond = dashboard.getBalanceOfSecondCard();
         int actualFirst = dashboard.getBalanceOfFirstCard();
         int expectedFirst = balanceOfFirstCardBefore;
